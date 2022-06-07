@@ -17,10 +17,6 @@ public class EmployeeController {
 
     private final EmployeeService service;
 
-    public EmployeeController(EmployeeService service) {
-        this.service = service;
-    }
-
     @Autowired
     private RestTemplate rest;
 
@@ -28,9 +24,11 @@ public class EmployeeController {
 
     private static final String API_ID = "http://localhost:8080/person/{id}";
 
+    public EmployeeController(EmployeeService service) {
+        this.service = service;
+    }
 
-
-    @GetMapping("/")
+     @GetMapping("/")
     public List<Employee> findAll() {
        return service.findAll();
     }
